@@ -1,0 +1,4 @@
+﻿  Handle.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\handleinheritance\handle.cpp(7): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\handleinheritance\handle.cpp(47): warning C4477: 'printf' : format string '%ld' requires an argument of type 'long', but variadic argument 1 has type 'HANDLE'
+  handleInheritance.vcxproj -> C:\Users\Sreya Somisetty\Desktop\AssignmentsNCR\Project1\Debug\handleInheritance.exe

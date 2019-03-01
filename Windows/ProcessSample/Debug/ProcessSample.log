@@ -1,0 +1,6 @@
+﻿  Process1.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\processsample\process1.cpp(7): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\processsample\process1.cpp(36): warning C4477: 'printf' : format string '%ld' requires an argument of type 'long', but variadic argument 1 has type 'HANDLE'
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\processsample\process1.cpp(38): warning C4477: 'printf' : format string '%ld' requires an argument of type 'long', but variadic argument 1 has type 'HANDLE'
+c:\users\sreya somisetty\desktop\assignmentsncr\project1\processsample\process1.cpp(10): warning C4101: 'hproc': unreferenced local variable
+  ProcessSample.vcxproj -> C:\Users\Sreya Somisetty\Desktop\AssignmentsNCR\Project1\Debug\ProcessSample.exe
