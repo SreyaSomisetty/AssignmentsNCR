@@ -1,0 +1,15 @@
+﻿  add.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\add.cpp(4): warning C4273: 'add': inconsistent dll linkage
+  c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\mylib.h(7): note: see previous definition of 'add'
+  div.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\div.cpp(4): warning C4273: 'divi': inconsistent dll linkage
+  c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\mylib.h(10): note: see previous definition of 'divi'
+  mul.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\mul.cpp(4): warning C4273: 'mul': inconsistent dll linkage
+  c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\mylib.h(9): note: see previous definition of 'mul'
+  sub.cpp
+c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\sub.cpp(4): warning C4273: 'sub': inconsistent dll linkage
+  c:\users\sreya somisetty\desktop\assignmentsncr\windows\21headerdll\mylib.h(8): note: see previous definition of 'sub'
+  Generating Code...
+     Creating library C:\Users\Sreya Somisetty\Desktop\AssignmentsNCR\Windows\Debug\21HeaderDLL.lib and object C:\Users\Sreya Somisetty\Desktop\AssignmentsNCR\Windows\Debug\21HeaderDLL.exp
+  21HeaderDLL.vcxproj -> C:\Users\Sreya Somisetty\Desktop\AssignmentsNCR\Windows\Debug\21HeaderDLL.dll
