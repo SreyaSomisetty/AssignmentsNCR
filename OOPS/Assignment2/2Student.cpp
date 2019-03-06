@@ -2,51 +2,56 @@
 using namespace std;
 class Student
 {
-	public:
-	char *name;
-	int rollno,m1,m2,m3;
-	float total;
-	char grade;
-	
-		void calcgrade()
-		{
-		  	total=(float)(m1+m2+m3)/3;
-		if(total>80 && total<=100)
-		     grade='A';
-		else if(total>60 && total<=80)
-		      grade='B';
-		else if(total>40 && total<=60)
-		      grade='C';
-		else
-		 grade='F';
-		
-		}
-	friend ostream& operator<<(ostream& cout,Student s);
-	friend istream& operator>>(ostream& cin,Student &s);
-		
-};
-istream& operator>>(istream& cin,Student &s)
-{
+public:
 
-	cin>>s.name;
-	cin>>s.m1;
-	cin>>s.m2;
-	cin>>s.m3;
-	s.calcgrade();
-return (cin);
-	 
-}
-ostream& operator<<(ostream& cout,Student s )
+	char *studentname;
+	char grade;
+	float total;
+	int sub1;
+	int sub2;
+	int sub3;
+
+	void calgrade()
+	{
+		float avg;
+		total = (float)(sub1 + sub2 + sub3);
+		avg = total / 3;
+		if (avg >= 60)
+			grade = 'A';
+		else if (avg < 60 && avg >= 50)
+			grade = 'B';
+		else
+			grade = 'C';
+
+	}
+	friend ostream&  operator<<(ostream& cout, Student s1);
+	friend istream&  operator>>(ostream& cin, Student &s1);
+
+};
+
+
+istream& operator>>(istream& cin, Student &s1)
 {
-	cout<<"Name is:"<<s.name<<endl;
-	cout<<"Marks are:"<<s.m1<<s.m2<<s.m3<<endl;
-     cout<<s.grade;
-	return cout;
+	cin >> s1.studentname;
+	cin >> s1.sub1;
+	cin >> s1.sub2;
+	cin >> s1.sub3;
+	s1.calgrade();
+	return (cin);
 }
+ostream& operator<<(ostream& cout, Student s1)
+{
+	cout << "name is" << s1.studentname << endl;
+	cout << "sub1 marks" << s1.sub1 << endl;
+	cout << "sub2 marks" << s1.sub2 << endl;
+	cout << "sub3 marks" << s1.sub3 << endl;
+	cout << "grade is" << s1.grade;
+	return(cout);
+}
+
 void main()
 {
-	Student a;
-	cin>>a;
-	cout<<a;
-
+	Student stu;
+	cin >> stu;
+	cout << stu;
 }
