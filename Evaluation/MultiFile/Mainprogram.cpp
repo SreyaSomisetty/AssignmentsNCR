@@ -56,7 +56,7 @@ int Evaluation(string str) {
 		if (isdigit(str[i]))
 		{
 			double a = (double)str[i];
-			stackeval.push(a - 48);
+			stackeval.push(a -'0');
 		}
 		else
 		{
@@ -76,7 +76,7 @@ int Evaluation(string str) {
 			case '-': res = subtraction(val1, val2);
 				stackeval.push(res);
 				break;
-			case '/': res = division(val1, val2);
+			case '/': res = division(val2, val1);
 				stackeval.push(res);
 				break;
 
