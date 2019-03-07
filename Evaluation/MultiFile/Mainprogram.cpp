@@ -20,8 +20,7 @@ bool balancingParanthesis(string expression)
     switch (expression[i])
 		{
 		case ')':
-
-			ch = sta.top();
+		        ch = sta.top();
 			sta.pop();
 			if (ch == '{' || ch == '[')
 				return false;
@@ -67,13 +66,13 @@ int Evaluation(string str) {
 			stackeval.pop();
 			switch (str[i])
 			{
-			case '*': res = multiplication(val1, val2);
+			case '*': res = multiplication(val2, val1);
 				stackeval.push(res);
 				break;
-			case '+':  res = addition(val1, val2);
+			case '+':  res = addition(val2, val1);
 				stackeval.push(res);
 				break;
-			case '-': res = subtraction(val1, val2);
+			case '-': res = subtraction(val2, val1);
 				stackeval.push(res);
 				break;
 			case '/': res = division(val2, val1);
@@ -85,7 +84,7 @@ int Evaluation(string str) {
 		}
 
 	}
-	cout << endl << "result is " << stackeval.top();
+	cout << endl << "Result of entered input is:" << stackeval.top();
 	return 0;
 }
 
@@ -116,7 +115,7 @@ int main()
 {
 	stack<char> schar;
 	string inputStr, postfixnew;
-	cout << "enter an equation :";
+	cout << "Enter a string:";
 	cin >> inputStr;
 	if (!balancingParanthesis(inputStr))
 	{
