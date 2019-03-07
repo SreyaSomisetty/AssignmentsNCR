@@ -1,69 +1,23 @@
 #include<iostream>
-#include<cstring>
+#include<string>
 #include<stack>
-#include<queue>
 using namespace std;
 double division(double, double);
 double addition(double, double);
 double subtraction(double, double);
 double multiplication(double, double);
-//Evaluating the expression
-int Evaluation(string str) {
-	stack<double> stackeval;
-	double val1,val2;
-	int i;
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (isdigit(str[i]))
-		{
-			double val = (double)str[i];//Typecasting char value
-			stackeval.push(val - '0');
-		}
-		else
-		{
-			double res;
-			val1 = stackeval.top();
-			stackeval.pop();
-			val2 = stackeval.top();
-			stackeval.pop();
-			switch (str[i])
-			{
-			case '*': res = multiplication(val1, val2);
-				stackeval.push(res);
-				break;
-			case '+':  res = addition(val1, val2);
-				stackeval.push(res);
-				break;
-			case '-': res = subtraction(val1, val2);
-				stackeval.push(res);
-				break;
-			case '/': res = division(val1, val2);
-				stackeval.push(res);
-				break;
-
-			}
-		}
-
-	}
-	cout<< "Result of entered string is " << stackeval.top()<<endl;
-	return 0;
-}
-//Validating whether it is balanced or not
-bool ValidString(string expression)
+bool balancingParanthesis(string expression)
 {
 	stack<char> sta;
 	char ch;
-	for (int i = 0; i<expression.length(); i++)
+	for (int i = 0; i < expression.length(); i++)
 	{
 		if (expression[i] == '(' || expression[i] == '{' || expression[i] == '[')
 		{
 			sta.push(expression[i]);
 			continue;
 		}
-		if (sta.empty())
-			return true;
-
-		switch (expression[i])
+    switch (expression[i])
 		{
 		case ')':
 
@@ -92,7 +46,49 @@ bool ValidString(string expression)
 	}
 	return (sta.empty());
 }
-//Priority check of operators
+
+int Evaluation(string str) {
+	stack<double> stackeval;
+	double val1, val2;
+	int i;
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (isdigit(str[i]))
+		{
+			double a = (double)str[i];
+			stackeval.push(a - 48);
+		}
+		else
+		{
+			double res;
+			val1 = stackeval.top();
+			stackeval.pop();
+			val2 = stackeval.top();
+			stackeval.pop();
+			switch (str[i])
+			{
+			case '*': res = multiplication(val1, val2);
+				stackeval.push(res);
+				break;
+			case '+':  res = addition(val1, val2);
+				stackeval.push(res);
+				break;
+			case '-': res = subtraction(val1, val2);
+				stackeval.push(res);
+				break;
+			case '/': res = division(val1, val2);
+				stackeval.push(res);
+				break;
+
+			}
+		
+		}
+
+	}
+	cout << endl << "result is " << stackeval.top();
+	return 0;
+}
+
 int check(char ch)
 {
 	switch (ch)
@@ -105,6 +101,12 @@ int check(char ch)
 	case '/':
 		return 2;
 		break;
+	case ')':return 6;
+		break;
+	case ']':return 5;
+		break;
+	case '}':return 4;
+		break;
 	default: return -1;
 		break;
 
@@ -113,67 +115,113 @@ int check(char ch)
 int main()
 {
 	stack<char> schar;
-	string inputStr, postfixnew, postfixresult;
-	cout << "Enter the input string:";
+	string inputStr, postfixnew;
+	cout << "enter an equation :";
 	cin >> inputStr;
-	if (!ValidString(inputStr))//Valid or not
+	if (!balancingParanthesis(inputStr))
 	{
-		cout << "Input is not valid";
+		cout << "Invalid input" << endl;
 		getchar();
 		return 0;
 	}
 	else
 	{
-		int size = inputStr.length();
+     int len = inputStr.length();
 		char c;
-
-		for (int i = 0; i < size; i++)
+		for (int i = 0; i < len; i++)
 		{
-			if (isdigit(inputStr[i]))
+			char ch = inputStr[i];
+			if (ch >= '0'&&ch <= '9')
 			{
-				postfixnew += inputStr[i];
-			}
-			else if (inputStr[i] == '(')
-			{
-				schar.push(inputStr[i]);
-			}
-			else if (inputStr[i] == ')')
-			{
-				while (!schar.empty() && schar.top() != '(')
-				{
-					c = schar.top();
-					schar.pop();
-					postfixnew += c;
-				}
-				if (schar.top() == '(') {
-					c = schar.top();
-					schar.top();
-				}
+				postfixnew += ch;
+
 			}
 			else
 			{
-				while (!schar.empty() && check(inputStr[i]) <= check(schar.top())) {
-					c = schar.top();
-					schar.pop();
-					postfixnew += c;
+				if (schar.empty())
+				{
+					schar.push(ch);
+					ch = schar.top();
 				}
-				schar.push(inputStr[i]);
+				else
+				{
+					if (check(ch) > check(schar.top()))
+					{
+						if (check(ch) == 6)
+						{
+							while (schar.top() != '(')
+							{
+								postfixnew += schar.top();
+
+								schar.pop();
+
+							}
+							schar.pop();
+
+						}
+						else if (check(ch) == 5)
+						{
+							while (schar.top() != '[')
+							{
+								postfixnew += schar.top();
+
+								schar.pop();
+
+							}
+							schar.pop();
+
+						}
+						else if (check(ch) == 4)
+						{
+							while (schar.top() != '{')
+							{
+								postfixnew += schar.top();
+
+								schar.pop();
+
+							}
+							schar.pop();
+
+						}
+						else
+							schar.push(ch);
+					}
+
+					else
+					{
+						if (check(ch) == -1)
+						{
+							schar.push(ch);
+						}
+						else
+						{
+							while (!schar.empty())
+							{
+								if (schar.top() != '(' && schar.top() != '['&&schar.top() != '{')
+								{
+									postfixnew += schar.top();
+									schar.pop();
+								}
+								else
+									break;
+							}
+
+							schar.push(ch);
+
+						}
+					}
+				}
 			}
 		}
-		while (!schar.empty()) {
-			c = schar.top();
+		while (!schar.empty())
+		{
+			postfixnew += schar.top();
 			schar.pop();
-			postfixnew += c;
 		}
-		for (int i = 0; i < size; i++) {
-			if (postfixnew[i] == '(') {
-				continue;
-			}
-			postfixresult += postfixnew[i];
-		}
-		Evaluation(postfixresult);//Evaluate the string
+
+
+		Evaluation(postfixnew);
 	}
-	system("pause");
 	getchar();
 	return 0;
 }
