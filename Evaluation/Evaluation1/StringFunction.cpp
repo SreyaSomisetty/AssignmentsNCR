@@ -75,7 +75,6 @@ int main()
 	char *temp;
 	char *str1;
 	str1 = NULL;
-	
 	str1 = (char*)malloc(30 * sizeof(char));
 	char *str2;
 	str2 = NULL;
@@ -83,7 +82,6 @@ int main()
 	printf("Enter two strings:");
 	gets_s(str1, 29);//Size is 30
 	gets_s(str2, 19);//Size is 20
-	temp = str1;
 	printf("Enter an operation to be performed.\n1.stringcopy()\n2.stringcat()\n3.strrev()\n4.stringcmp()\n");
 	scanf_s("%d", &ch);
 	while (ch <= 4)
@@ -113,7 +111,12 @@ int main()
 		}
 		case 3:
 		{
-		 
+		        printf("\nChoose which string to be reversed:");
+			scanf_s("%d", &choice);
+			if (choice == 1)
+				temp = str1;
+			if(choose==2)
+				temp = str2;
 			printf("Reversed string is %s", stringreverse(temp) );
 			break;
 
